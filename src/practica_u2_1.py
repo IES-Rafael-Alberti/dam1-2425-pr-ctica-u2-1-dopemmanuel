@@ -13,7 +13,10 @@ def comprobar_importe(valor: str) -> bool:
     Returns:
         bool: True si el valor es un número válido (positivo, negativo o con punto decimal), False en caso contrario.
     """
-
+    if valor == int or valor == float:
+        return True
+    else:
+        return False
 
 def comprobar_comando(comando: str) -> bool:
     """
@@ -25,13 +28,16 @@ def comprobar_comando(comando: str) -> bool:
     Returns:
         bool: True si el comando está en la lista de comandos válidos, False en caso contrario.
     """
-
-
+    if comando in COMANDOS:
+        return COMANDOS
+    else:
+        return comando
+    
 def mostrar_mensaje_error():
     """
     Muestra el mensaje de error por entrada inválida.
     """
-
+    print(MENSAJE_ERROR)
 
 def procesar_compra(saldo: float, importe: float) -> float:
     """
@@ -44,7 +50,7 @@ def procesar_compra(saldo: float, importe: float) -> float:
     Returns:
         float: El saldo actualizado después de realizar la compra.
     """
-
+    return saldo - importe
 
 def procesar_venta(saldo: float, importe: float) -> float:
     """
@@ -57,7 +63,7 @@ def procesar_venta(saldo: float, importe: float) -> float:
     Returns:
         float: El saldo actualizado después de realizar la venta.
     """
-
+    return saldo + importe
 
 def mostrar_saldo(saldo: float, cont_compras: int, cont_ventas: int):
     """
@@ -68,7 +74,7 @@ def mostrar_saldo(saldo: float, cont_compras: int, cont_ventas: int):
         cont_compras (int): Número total de compras realizadas.
         cont_ventas (int): Número total de ventas realizadas.
     """
-
+    print(f"El saldo actual es de {saldo:.2f}€. \nEl numero total de compras realizadas es de {cont_compras}€. \n El numero total de ventas realizadas es de {cont_ventas}. ")
 
 def resetear_saldo(saldo: float, cont_compras: int, cont_ventas: int) -> tuple[float, int, int]:
     """
@@ -82,7 +88,8 @@ def resetear_saldo(saldo: float, cont_compras: int, cont_ventas: int) -> tuple[f
     Returns:
         tuple[float, int, int]: El nuevo saldo (0), número de compras (0) y número de ventas (0) después del reinicio.
     """
-
+    print(f"El saldo actual es de {saldo:.2f}€. \nEl numero total de compras realizadas es de {cont_compras}€. \n El numero total de ventas realizadas es de {cont_ventas}. ")
+    return [0.0, 0, 0]
 
 def recuperar_comando_e_importe(linea: str) -> tuple[str, str]:
     """
@@ -174,7 +181,6 @@ def main():
             if comando == "compra":
 
             elif comando == "venta":
-
 
             
 if __name__ == "__main__":
